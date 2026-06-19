@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Events — FTCC Filipino Tech Community Canberra</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    .events-list { display:flex; flex-direction:column; gap:24px; margin-top:48px; }
+    .event-row {
+      display:grid; grid-template-columns:160px 1fr auto;
+      gap:32px; align-items:center;
+      background:var(--white); border-radius:var(--radius-lg);
+      padding:28px 32px; border:1.5px solid rgba(13,27,62,0.08);
+      transition:box-shadow .25s, transform .25s;
+    }
+    .event-row:hover { box-shadow:var(--shadow-lg); transform:translateY(-2px); }
+    .event-date-block {
+      background:var(--navy); border-radius:var(--radius); padding:20px;
+      text-align:center; color:var(--white);
+    }
+    .event-date-block .day { font-family:var(--font-display); font-size:2rem; font-weight:600; line-height:1; color:var(--gold); }
+    .event-date-block .dow { font-size:.75rem; text-transform:uppercase; letter-spacing:.08em; opacity:.6; margin-top:4px; }
+    .event-info h3 { color:var(--navy); margin-bottom:8px; }
+    .event-info .meta { display:flex; gap:20px; flex-wrap:wrap; }
+    .event-info .meta span { color:var(--text-light); font-size:.875rem; display:flex; align-items:center; gap:6px; }
+    .event-info p { color:var(--text-light); font-size:.9rem; margin-top:10px; }
+    .event-chip {
+      display:inline-block; padding:4px 12px; border-radius:100px;
+      font-size:.75rem; font-weight:700; letter-spacing:.04em;
+    }
+    .chip-upcoming { background:rgba(245,200,66,.15); color:#8a6400; }
+    .chip-past { background:rgba(13,27,62,.06); color:var(--muted); }
+    @media(max-width:680px) {
+      .event-row { grid-template-columns:1fr; }
+      .event-date-block { display:flex; gap:12px; align-items:center; padding:14px 16px; }
+      .event-date-block .day { font-size:1.4rem; }
+    }
+  </style>
+</head>
+<body>
+
+<div id="nav-placeholder"></div>
+
+<section class="page-hero">
+  <div class="container">
+    <div class="section-label">What's on</div>
+    <h1>Events &amp; gatherings</h1>
+    <p>We run regular events across the year — from socials and workshops to hackathons. All are welcome at FTCC events.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-label">Upcoming events</div>
+    <h2 class="section-title">What's coming up</h2>
+    <div class="events-list">
+
+      <div class="event-row">
+        <div class="event-date-block">
+          <div class="day">TBA</div>
+          <div class="dow">Friday</div>
+        </div>
+        <div class="event-info">
+          <div class="meta">
+            <span>📍 AWS Offices Canberra</span>
+            <span>⏰ 8:00 AM</span>
+          </div>
+          <h3>FTCC Inaugural General Assembly</h3>
+          <p>A historic milestone — our first General Assembly as a formally incorporated association in the ACT. All members are encouraged to attend.</p>
+        </div>
+        <div><span class="event-chip chip-upcoming">Upcoming</span></div>
+      </div>
+
+      <div class="event-row">
+        <div class="event-date-block">
+          <div class="day">TBA</div>
+          <div class="dow">Wednesday</div>
+        </div>
+        <div class="event-info">
+          <div class="meta">
+            <span>📍 Philippine Embassy, Yarralumla</span>
+            <span>⏰ 7:00 AM</span>
+          </div>
+          <h3>Philippine Independence Day Celebration</h3>
+          <p>Celebrate Philippine Independence Day alongside the broader Filipino community in Canberra at the Philippine Embassy.</p>
+        </div>
+        <div><span class="event-chip chip-upcoming">Upcoming</span></div>
+      </div>
+
+      <div class="event-row">
+        <div class="event-date-block">
+          <div class="day">TBA</div>
+          <div class="dow">Sunday</div>
+        </div>
+        <div class="event-info">
+          <div class="meta">
+            <span>📍 AWS Offices Canberra</span>
+            <span>⏰ 8:30 AM</span>
+          </div>
+          <h3>GovHack 2024</h3>
+          <p>FTCC members participating in GovHack — Australia's biggest open data hackathon. Come build something impactful with government data over a weekend.</p>
+        </div>
+        <div><span class="event-chip chip-upcoming">Hackathon</span></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="section" style="background:var(--off-white)">
+  <div class="container">
+    <div class="section-label">Past highlights</div>
+    <h2 class="section-title">Where we've been</h2>
+    <div class="events-list">
+      <div class="event-row">
+        <div class="event-date-block">
+          <div class="day">2023</div>
+          <div class="dow">Past</div>
+        </div>
+        <div class="event-info">
+          <div class="meta">
+            <span>📍 Canberra</span>
+          </div>
+          <h3>FTCC Lunch and Learn Series</h3>
+          <p>A series of lunchtime learning sessions featuring guest speakers, Filipino ICT leaders, and community conversations — including a visit from Consul General Aian Caringal.</p>
+        </div>
+        <div><span class="event-chip chip-past">Past event</span></div>
+      </div>
+      <div class="event-row">
+        <div class="event-date-block">
+          <div class="day">2022</div>
+          <div class="dow">Past</div>
+        </div>
+        <div class="event-info">
+          <div class="meta">
+            <span>📍 Virtual</span>
+          </div>
+          <h3>Meeting with Philippine Ambassador</h3>
+          <p>Philippine Ambassador Ma. Hellen B. De La Vega met virtually with the newly established FTCC as part of efforts to strengthen bilateral cooperation on science, technology and innovation.</p>
+        </div>
+        <div><span class="event-chip chip-past">Past event</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section membership">
+  <div class="container" style="position:relative;z-index:2;text-align:center;">
+    <div class="section-label">Stay in the loop</div>
+    <h2 class="section-title">Don't miss the next event.</h2>
+    <p class="section-sub" style="margin:0 auto 36px;">Members get first access to events, workshops and social gatherings. Join the community today.</p>
+    <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;">
+      <a href="membership.html" class="btn btn-primary">Become a member</a>
+      <a href="contact.html" class="btn btn-outline">Contact us</a>
+    </div>
+  </div>
+</section>
+
+<div id="footer-placeholder"></div>
+<script src="js/components.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

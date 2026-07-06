@@ -1,23 +1,4 @@
-// ── Nav active state ──
-const currentPage = location.pathname.split('/').pop() || 'index.html';
-document.querySelectorAll('nav a').forEach(a => {
-  const href = a.getAttribute('href');
-  if (href === currentPage || (currentPage === '' && href === 'index.html')) {
-    a.classList.add('active');
-  }
-});
-
-// ── Mobile menu toggle ──
-const toggle = document.querySelector('.nav-toggle');
-const mobileMenu = document.querySelector('.nav-mobile');
-if (toggle && mobileMenu) {
-  toggle.addEventListener('click', () => {
-    mobileMenu.classList.toggle('hidden');
-  });
-}
-
-// ── Scroll reveal ──
-const observer = new IntersectionObserver((entries) => {
+const revealObserver = new IntersectionObserver((entries) => {
   entries.forEach(e => {
     if (e.isIntersecting) {
       e.target.style.opacity = '1';
@@ -26,27 +7,65 @@ const observer = new IntersectionObserver((entries) => {
   });
 }, { threshold: 0.1 });
 
+const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 document.querySelectorAll('.pillar-card, .event-card, .founder-card, .program-item, .eligibility-card, .process-card').forEach(el => {
+  if (reduceMotion) return;
   el.style.opacity = '0';
   el.style.transform = 'translateY(20px)';
-  el.style.transition = 'opacity 0.5s ease, transform 0.5s ease, box-shadow 0.25s, box-shadow 0.25s';
-  observer.observe(el);
+  el.style.transition = 'opacity 0.5s ease, transform 0.5s ease, box-shadow 0.25s';
+  revealObserver.observe(el);
 });
 
-// ── Contact form ──
 const form = document.getElementById('contact-form');
 if (form) {
-  form.addEventListener('submit', e => {
+  const status = document.getElementById('form-status');
+  const submitBtn = form.querySelector('button[type=submit]');
+  const PLACEHOLDER = 'YOUR_WEB3FORMS_ACCESS_KEY';
+
+  const setStatus = (msg, ok) => {
+    if (!status) return;
+    status.textContent = msg;
+    status.style.color = ok === true ? '#16a34a' : ok === false ? '#dc2626' : '';
+  };
+
+  form.addEventListener('submit', async e => {
     e.preventDefault();
-    const btn = form.querySelector('button[type=submit]');
-    btn.textContent = '✓ Message sent!';
-    btn.style.background = '#22c55e';
-    btn.style.color = '#fff';
-    setTimeout(() => {
-      btn.textContent = 'Send message';
-      btn.style.background = '';
-      btn.style.color = '';
-      form.reset();
-    }, 3000);
+    const data = new FormData(form);
+    const key = data.get('access_key');
+
+    if (!key || key === PLACEHOLDER) {
+      const reason = data.get('reason') || '';
+      const subject = encodeURIComponent('FTCC enquiry' + (reason ? ' — ' + reason : ''));
+      const body = encodeURIComponent(
+        `Name: ${data.get('name') || ''}\n` +
+        `Email: ${data.get('email') || ''}\n` +
+        `Reason: ${reason}\n\n` +
+        `${data.get('message') || ''}`
+      );
+      window.location.href = `mailto:hello@ftcc.org.au?subject=${subject}&body=${body}`;
+      setStatus('Opening your email app so you can send the message…');
+      return;
+    }
+
+    if (submitBtn) { submitBtn.disabled = true; submitBtn.textContent = 'Sending…'; }
+    setStatus('');
+    try {
+      const res = await fetch(form.action, {
+        method: 'POST',
+        body: data,
+        headers: { Accept: 'application/json' },
+      });
+      const result = await res.json();
+      if (result.success) {
+        setStatus('✓ Thanks! Your message has been sent.', true);
+        form.reset();
+      } else {
+        throw new Error(result.message || 'Submission failed');
+      }
+    } catch (err) {
+      setStatus('Sorry, something went wrong. Please email hello@ftcc.org.au directly.', false);
+    } finally {
+      if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = 'Send message'; }
+    }
   });
 }

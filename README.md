@@ -254,11 +254,14 @@ All content lives directly in the HTML files — no CMS or build process.
 
 ## 📬 Contact form
 
-The contact form in `contact.html` currently shows a success message on submit but does **not** send emails (no backend). To make it functional, replace the form handler in `js/main.js` with one of these:
+The contact form in `contact.html` is wired to **[Web3Forms](https://web3forms.com)** (free, no backend). To turn on email delivery:
 
-- **[Formspree](https://formspree.io)** — free tier, add `action="https://formspree.io/f/YOUR_ID"` to the form tag
-- **[Web3Forms](https://web3forms.com)** — free, no account required
-- **EmailJS** — sends email directly from the browser
+1. Go to [web3forms.com](https://web3forms.com) and enter **hello@ftcc.org.au** to generate an access key (no account or password needed — the key is emailed to you).
+2. In `contact.html`, replace `YOUR_WEB3FORMS_ACCESS_KEY` with that key.
+
+That's it — submissions then arrive at hello@ftcc.org.au. The access key is a public client-side key and is safe to commit: it only ever delivers to that inbox. A hidden honeypot field silently drops bots.
+
+**Until the key is set**, the form still works: submitting opens the visitor's email app pre-filled to hello@ftcc.org.au, so it is never a dead end.
 
 ---
 

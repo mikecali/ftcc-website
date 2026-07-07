@@ -69,7 +69,7 @@ const FOOTER_HTML = `
     </div>
     <div class="footer-bottom">
       <p>© 2024 Filipino Tech Community Canberra (FTCC). All rights reserved.</p>
-      <p>Incorporated Association — Australian Capital Territory</p>
+      <p>Incorporated Association, Australian Capital Territory</p>
     </div>
   </div>
 </footer>

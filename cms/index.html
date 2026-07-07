@@ -9,22 +9,10 @@
   <div id="nc-root"></div>
 
   <script>
-    // Must be set before Decap loads
     window.CMS_CONFIG_URL = '/ftcc-website/cms/config.yml';
   </script>
 
-  <script src="https://unpkg.com/decap-cms@3.1.4/dist/decap-cms.js"></script>
-
-  <script>
-    // Handle OAuth callback message from popup window
-    window.addEventListener('message', function(e) {
-      if (e.data && typeof e.data === 'string' && e.data.startsWith('authorization:github:success:')) {
-        console.log('Auth message received:', e.data);
-        // Re-post to ensure Decap catches it
-        window.postMessage(e.data, window.location.origin);
-        window.postMessage(e.data, '*');
-      }
-    });
-  </script>
+  <!-- Use v2 — more stable for GitHub Pages subdirectory auth -->
+  <script src="https://unpkg.com/netlify-cms@^2.10.192/dist/netlify-cms.js"></script>
 </body>
 </html>

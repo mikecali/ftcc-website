@@ -7,19 +7,6 @@
 </head>
 <body>
   <div id="nc-root"></div>
-  <script>
-    window.addEventListener('message', function(e) {
-      if (typeof e.data === 'string' && e.data.indexOf('authorization:github:success:') === 0) {
-        try {
-          var payload = JSON.parse(e.data.replace('authorization:github:success:', ''));
-          localStorage.setItem('netlify-cms-user', JSON.stringify(payload));
-          window.location.reload();
-        } catch(err) {
-          console.error('Auth parse error:', err);
-        }
-      }
-    });
-  </script>
   <script src="https://unpkg.com/netlify-cms@2.10.192/dist/netlify-cms.js"></script>
 </body>
 </html>

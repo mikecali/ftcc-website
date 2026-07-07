@@ -3,9 +3,7 @@ backend:
   repo: mikecali/ftcc-website
   branch: main
   base_url: https://ftcc-cms-auth.mike-calizo.workers.dev
-  auth_endpoint: auth
   app_id: Ov23liWzEKsZXBTmEGM7
-  auth_type: pkce
 
 site_url: https://mikecali.github.io/ftcc-website
 display_url: https://mikecali.github.io/ftcc-website
@@ -30,15 +28,15 @@ collections:
         options:
           - { label: "Upcoming", value: upcoming }
           - { label: "Featured", value: featured }
-          - { label: "Past",     value: past }
+          - { label: "Past", value: past }
         default: upcoming
-      - { label: "Date",     name: date,     widget: datetime, format: "YYYY-MM-DD", date_format: "DD/MM/YYYY", time_format: false, required: false }
-      - { label: "Time",     name: time,     widget: string, required: false }
+      - { label: "Date", name: date, widget: datetime, format: "YYYY-MM-DD", date_format: "DD/MM/YYYY", time_format: false, required: false }
+      - { label: "Time", name: time, widget: string, required: false }
       - { label: "Location", name: location, widget: string, required: false }
       - { label: "Description", name: description, widget: text, required: false }
-      - { label: "Partner",  name: partner,  widget: string, required: false }
-      - { label: "Tags",     name: tags,     widget: list,   required: false }
-      - { label: "Image",    name: image,    widget: image,  required: false }
+      - { label: "Partner", name: partner, widget: string, required: false }
+      - { label: "Tags", name: tags, widget: list, required: false }
+      - { label: "Image", name: image, widget: image, required: false }
 
   - name: "news"
     label: "News"
@@ -49,10 +47,10 @@ collections:
     identifier_field: title
     format: json
     fields:
-      - { label: "Title",   name: title,   widget: string }
-      - { label: "Date",    name: date,    widget: datetime, format: "YYYY-MM-DD", date_format: "DD/MM/YYYY", time_format: false, required: false }
+      - { label: "Title", name: title, widget: string }
+      - { label: "Date", name: date, widget: datetime, format: "YYYY-MM-DD", date_format: "DD/MM/YYYY", time_format: false, required: false }
       - { label: "Excerpt", name: excerpt, widget: string, required: false }
-      - { label: "Body",    name: body,    widget: text,   required: false }
-      - { label: "Image",   name: image,   widget: image,  required: false }
-      - { label: "Tags",    name: tags,    widget: list,   required: false }
+      - { label: "Body", name: body, widget: text, required: false }
+      - { label: "Image", name: image, widget: image, required: false }
+      - { label: "Tags", name: tags, widget: list, required: false }
       - { label: "Facebook Link", name: facebook_url, widget: string, required: false }

@@ -14,7 +14,7 @@ const NAV_HTML = `
       <a href="membership.html">Membership</a>
       <a href="contact.html" class="btn-nav">Join Us</a>
     </div>
-    <div class="nav-toggle" id="nav-toggle">
+    <div class="nav-toggle" id="nav-toggle" role="button" tabindex="0" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="nav-mobile">
       <span></span><span></span><span></span>
     </div>
   </div>
@@ -83,7 +83,17 @@ document.getElementById('footer-placeholder').innerHTML = FOOTER_HTML;
 const toggle = document.getElementById('nav-toggle');
 const mobileMenu = document.getElementById('nav-mobile');
 if (toggle && mobileMenu) {
-  toggle.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+  const toggleMenu = () => {
+    const open = !mobileMenu.classList.toggle('hidden');
+    toggle.setAttribute('aria-expanded', String(open));
+  };
+  toggle.addEventListener('click', toggleMenu);
+  toggle.addEventListener('keydown', e => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      toggleMenu();
+    }
+  });
 }
 
 // Nav active state

@@ -1,3 +1,4 @@
+cat > ~/ftcc-website/cms/auth.html << 'EOF'
 <!DOCTYPE html>
 <html>
 <head><title>FTCC CMS Auth</title></head>
@@ -8,14 +9,26 @@
   var params = new URLSearchParams(hash);
   var token = params.get('token');
   if (token) {
+    // Save in this window's localStorage
     localStorage.setItem('netlify-cms-user', JSON.stringify({
       token: token,
       provider: 'github'
     }));
-    window.location.href = '/ftcc-website/cms/';
+    // Tell the parent window to reload
+    if (window.opener) {
+      window.opener.localStorage.setItem('netlify-cms-user', JSON.stringify({
+        token: token,
+        provider: 'github'
+      }));
+      window.opener.location.reload();
+      window.close();
+    } else {
+      window.location.href = '/ftcc-website/cms/';
+    }
   } else {
-    document.body.innerHTML = '<p>Error: no token found. <a href="/ftcc-website/cms/">Try again</a></p>';
+    document.body.innerHTML = '<p>Error: no token. <a href="/ftcc-website/cms/">Try again</a></p>';
   }
 </script>
 </body>
 </html>
+EOF

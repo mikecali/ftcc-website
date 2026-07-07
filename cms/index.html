@@ -4,13 +4,15 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>FTCC CMS</title>
+</head>
+<body>
+  <div id="nc-root"></div>
+
   <script>
     window.CMS_CONFIG_URL = '/ftcc-website/cms/config.yml';
   </script>
-</head>
-<body>
-  <!-- Decap CMS mounts here -->
-  <div id="nc-root"></div>
-  <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+
+  <!-- Pinned to last known stable version that works on subdirectory GitHub Pages -->
+  <script src="https://unpkg.com/decap-cms@3.1.4/dist/decap-cms.js"></script>
 </body>
 </html>

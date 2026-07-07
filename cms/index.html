@@ -3,11 +3,14 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>FTCC CMS — Admin</title>
-  <!-- Decap CMS -->
-  <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+  <title>FTCC CMS</title>
+  <script>
+    window.CMS_CONFIG_URL = '/ftcc-website/cms/config.yml';
+  </script>
 </head>
 <body>
-  <!-- Decap CMS mounts here automatically -->
+  <!-- Decap CMS mounts here -->
+  <div id="nc-root"></div>
+  <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
 </body>
 </html>

@@ -10,6 +10,9 @@ backend:
   base_url: https://sveltia-cms-auth.pages.dev  # free OAuth proxy (see README)
   app_id: Ov23liWzEKsZXBTmEGM7
 
+site_url: https://mikecali.github.io/ftcc-website
+display_url: https://mikecali.github.io/ftcc-website
+    
 # Where uploaded images get stored in the repo
 media_folder: "images/uploads"
 public_folder: "/images/uploads"

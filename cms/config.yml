@@ -5,6 +5,7 @@ backend:
   base_url: https://ftcc-cms-auth.mike-calizo.workers.dev
   auth_endpoint: auth
   app_id: Ov23liWzEKsZXBTmEGM7
+  auth_type: pkce
 
 site_url: https://mikecali.github.io/ftcc-website
 display_url: https://mikecali.github.io/ftcc-website

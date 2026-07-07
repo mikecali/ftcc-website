@@ -8,6 +8,7 @@ backend:
   repo: mikecali/ftcc-website        # ← your GitHub repo
   branch: main                        # ← your default branch
   base_url: https://sveltia-cms-auth.pages.dev  # free OAuth proxy (see README)
+  app_id: Ov23liWzEKsZXBTmEGM7
 
 # Where uploaded images get stored in the repo
 media_folder: "images/uploads"

@@ -1,26 +1,18 @@
-# ─────────────────────────────────────────────────────────────
-# Decap CMS Configuration for FTCC Website
-# Docs: https://decapcms.org/docs/configuration-options/
-# ─────────────────────────────────────────────────────────────
-
 backend:
   name: github
-  repo: mikecali/ftcc-website        # ← your GitHub repo
-  branch: main                        # ← your default branch
-  base_url: https://sveltia-cms-auth.pages.dev  # free OAuth proxy (see README)
+  repo: mikecali/ftcc-website
+  branch: main
+  base_url: https://ftcc-cms-auth.mike-calizo.workers.dev
+  auth_endpoint: auth
   app_id: Ov23liWzEKsZXBTmEGM7
 
 site_url: https://mikecali.github.io/ftcc-website
 display_url: https://mikecali.github.io/ftcc-website
-    
-# Where uploaded images get stored in the repo
+
 media_folder: "images/uploads"
-public_folder: "/images/uploads"
+public_folder: "/ftcc-website/images/uploads"
 
-# ─── CONTENT COLLECTIONS ─────────────────────────────────────
 collections:
-
-  # ── EVENTS ──────────────────────────────────────────────────
   - name: "events"
     label: "Events"
     label_singular: "Event"
@@ -30,28 +22,23 @@ collections:
     identifier_field: title
     format: json
     fields:
-      - { label: "Title",       name: title,       widget: string }
+      - { label: "Title", name: title, widget: string }
       - label: "Status"
         name: status
         widget: select
         options:
-          - { label: "Upcoming",  value: upcoming }
-          - { label: "Featured",  value: featured }
-          - { label: "Past",      value: past }
+          - { label: "Upcoming", value: upcoming }
+          - { label: "Featured", value: featured }
+          - { label: "Past",     value: past }
         default: upcoming
-      - { label: "Date",        name: date,        widget: datetime, format: "YYYY-MM-DD", date_format: "DD/MM/YYYY", time_format: false, required: false }
-      - { label: "Time",        name: time,        widget: string,   required: false, hint: "e.g. 6:00 PM" }
-      - { label: "Location",    name: location,    widget: string,   required: false }
-      - { label: "Description", name: description, widget: text,     required: false }
-      - { label: "Partner / Co-host", name: partner, widget: string, required: false, hint: "e.g. ACS Canberra" }
-      - label: "Tags"
-        name: tags
-        widget: list
-        required: false
-        hint: "Add tags like FTCC, AI, CanberraTech"
-      - { label: "Event Image", name: image, widget: image, required: false }
+      - { label: "Date",     name: date,     widget: datetime, format: "YYYY-MM-DD", date_format: "DD/MM/YYYY", time_format: false, required: false }
+      - { label: "Time",     name: time,     widget: string, required: false }
+      - { label: "Location", name: location, widget: string, required: false }
+      - { label: "Description", name: description, widget: text, required: false }
+      - { label: "Partner",  name: partner,  widget: string, required: false }
+      - { label: "Tags",     name: tags,     widget: list,   required: false }
+      - { label: "Image",    name: image,    widget: image,  required: false }
 
-  # ── NEWS ────────────────────────────────────────────────────
   - name: "news"
     label: "News"
     label_singular: "News Post"
@@ -61,13 +48,10 @@ collections:
     identifier_field: title
     format: json
     fields:
-      - { label: "Title",        name: title,        widget: string }
-      - { label: "Date",         name: date,         widget: datetime, format: "YYYY-MM-DD", date_format: "DD/MM/YYYY", time_format: false, required: false }
-      - { label: "Short Excerpt",name: excerpt,       widget: string,   required: false, hint: "One sentence shown in listings" }
-      - { label: "Full Body",    name: body,          widget: text,     required: false }
-      - { label: "Cover Image",  name: image,         widget: image,    required: false }
-      - label: "Tags"
-        name: tags
-        widget: list
-        required: false
-      - { label: "Facebook / External Link", name: facebook_url, widget: string, required: false }
+      - { label: "Title",   name: title,   widget: string }
+      - { label: "Date",    name: date,    widget: datetime, format: "YYYY-MM-DD", date_format: "DD/MM/YYYY", time_format: false, required: false }
+      - { label: "Excerpt", name: excerpt, widget: string, required: false }
+      - { label: "Body",    name: body,    widget: text,   required: false }
+      - { label: "Image",   name: image,   widget: image,  required: false }
+      - { label: "Tags",    name: tags,    widget: list,   required: false }
+      - { label: "Facebook Link", name: facebook_url, widget: string, required: false }

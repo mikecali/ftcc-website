@@ -8,7 +8,6 @@
 <body>
   <div id="nc-root"></div>
   <script>
-    // Check if this is an auth callback
     if (window.location.hash && window.location.hash.indexOf('access_token') > -1) {
       var params = new URLSearchParams(window.location.hash.substring(1));
       var token = params.get('access_token');
@@ -17,7 +16,7 @@
           token: token,
           provider: 'github'
         }));
-        window.location.hash = '';
+        window.location.replace(window.location.pathname);
       }
     }
   </script>
